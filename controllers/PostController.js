@@ -26,7 +26,8 @@ export const create = async (req, res) => {
 export const getAll = async (req, res) => {
     try {
         //.populate('author').exec() нужно чтобы возвращать не id автора, а его данные
-        const posts = await PostModel.find().populate('author').exec();
+        // const posts = await PostModel.find().populate('author').exec();
+        const posts = await PostModel.find();
         res.status(200).json(posts)
     } catch (err) {
         console.log(err)
