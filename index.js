@@ -8,9 +8,9 @@ import {postValidation} from "./validators.js";
 import {checkAuth, validationErrors} from './utils/index.js'
 import {UserController, PostController} from './controllers/index.js'
 
-const mongoURL = 'mongodb+srv://Solo:Solo.329@cluster0.yqqj3tt.mongodb.net/blog?retryWrites=true&w=majority'
+const mongoURI = 'mongodb+srv://Solo:Solo.329@cluster0.yqqj3tt.mongodb.net/blog?retryWrites=true&w=majority'
 mongoose
-    .connect(process.env.MONGODB_URI)
+    .connect(mongoURI)
     .then(() => console.log('DB OK'))
     .catch((err) => console.log('DB error', err))
 
