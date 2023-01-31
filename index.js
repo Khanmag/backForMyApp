@@ -48,8 +48,8 @@ app.post('/posts', checkAuth, postValidation, validationErrors, PostController.c
 app.patch('/posts/:id', checkAuth, postValidation, validationErrors, PostController.update);
 app.delete('/posts/:id',checkAuth, PostController.remove);
 
-
-app.listen(8888, (err) => {
+const mainURL = 'https://khanmag.github.io/backForMyApp'
+app.listen(mainURL, (err) => {
     if (err) return console.log(err)
     console.log('Server OK')
 })
