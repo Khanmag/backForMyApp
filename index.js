@@ -8,8 +8,9 @@ import {postValidation} from "./validators.js";
 import {checkAuth, validationErrors} from './utils/index.js'
 import {UserController, PostController} from './controllers/index.js'
 
+const mongoURL = 'mongodb+srv://Solo:Solo.329@cluster0.yqqj3tt.mongodb.net/blog?retryWrites=true&w=majority'
 mongoose
-    .connect('mongodb+srv://Solo:Solo.329@cluster0.yqqj3tt.mongodb.net/blog?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB_URI)
     .then(() => console.log('DB OK'))
     .catch((err) => console.log('DB error', err))
 
@@ -48,8 +49,7 @@ app.post('/posts', checkAuth, postValidation, validationErrors, PostController.c
 app.patch('/posts/:id', checkAuth, postValidation, validationErrors, PostController.update);
 app.delete('/posts/:id',checkAuth, PostController.remove);
 
-const mainURL = 'https://khanmag.github.io/backForMyApp'
-app.listen(mainURL, (err) => {
+app.listen(process.env.PORT || 8888, (err) => {
     if (err) return console.log(err)
     console.log('Server OK')
 })
